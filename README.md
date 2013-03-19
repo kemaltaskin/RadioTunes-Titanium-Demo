@@ -1,7 +1,7 @@
 RadioTunes Titanium SDK
 ===
 
-This is a port of the [RadioTunes SDK](http://yakamozlabs.com/products/radiotunes) component which was originally developed for the iOS platform. Now you can use this powerful radio streaming engine in your **Appcelerator apps** too and start writing radio apps in Javascript!
+This is a port of the [RadioTunes SDK](http://www.binpress.com/app/radiotunes-sdk-for-ios/596) component which was originally developed for the iOS platform. Now you can use this powerful radio streaming engine in your **Appcelerator apps** too and start writing radio apps in Javascript!
 
 RadioTunes Titanium SDK is the definitive framework for Appcelerator app developers who want to add radio streaming & recording functionality to their apps. Behind the scenes RadioTunes relies on the iOS AudioQueue framework and the open source LGPL licensed FFmpeg library.
 
@@ -11,7 +11,7 @@ Note: The demo project will only play radio streams for a limited time only.
 
 ![banner](http://dl.dropbox.com/u/1413757/RadioTunes/banner.png)
 
-###You can purchase a commercial license with the full source code at [Yakamoz Labs](http://yakamozlabs.com/products/radiotunes-titanium/pricing).
+###You can purchase a commercial license with the full source code at [Binpress](http://www.binpress.com/app/radiotunes-sdk-for-appcelerator/1045).
 
 # Features
 
