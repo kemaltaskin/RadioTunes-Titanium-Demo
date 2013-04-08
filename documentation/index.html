@@ -95,20 +95,20 @@ dd{margin-left:2em;margin-bottom:1em;}
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.0.1.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.1.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.0.1.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.1.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.0.1
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.1
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.0.1"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.1"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -215,6 +215,7 @@ radiotunes.addEventListener('remote_control_previous_track', function(e) {
 <li><strong>stopRecording()</strong> - Stop recording.</li>
 <li><strong>fileExtensionHint()</strong> -  Returns the appropriate filename extension that should be used for recording.</li>
 <li><strong>shutdown()</strong> - This method should be called before disposing the radio object!</li>
+<li><strong>url()</strong> - Returns the url as a string value. This url can be different than the one you passed in the createHTTPRadio and createMMSRadio functions. If a playlist is detected this property will contain the first url detected by the playlist parser.</li>
 <li><strong>isPlaying()</strong> - Returns the value of the boolean playing property.</li>
 <li><strong>isPaused()</strong> - Returns the value of the boolean paused property.</li>
 <li><strong>isBuffering()</strong> - Returns the value of the boolean buffering property.</li>
@@ -283,22 +284,24 @@ radiotunes.addEventListener('remote_control_previous_track', function(e) {
         if(error == 1) {
             myapp.ui.titleLabel.setText("Playlist could not be parsed.");
         } else if(error == 2) {
-            myapp.ui.titleLabel.setText("File stream get property failed.");
+            // mms URL detected by ASX playlist parser. Switch over to a mms radio instance.
         } else if(error == 3) {
-            myapp.ui.titleLabel.setText("File stream could not be opened.");
+            myapp.ui.titleLabel.setText("File stream get property failed.");
         } else if(error == 4) {
-            myapp.ui.titleLabel.setText("Audio queue could not be created.");
+            myapp.ui.titleLabel.setText("File stream could not be opened.");
         } else if(error == 5) {
-            myapp.ui.titleLabel.setText("Audio buffers could not be created.");
+            myapp.ui.titleLabel.setText("Audio queue could not be created.");
         } else if(error == 6) {
-            myapp.ui.titleLabel.setText("Audio queue enqueue failed.");
+            myapp.ui.titleLabel.setText("Audio buffers could not be created.");
         } else if(error == 7) {
-            myapp.ui.titleLabel.setText("Audio queue could not be started.");
+            myapp.ui.titleLabel.setText("Audio queue enqueue failed.");
         } else if(error == 8) {
-            myapp.ui.titleLabel.setText("Audio decoding error.");
+            myapp.ui.titleLabel.setText("Audio queue could not be started.");
         } else if(error == 9) {
-            myapp.ui.titleLabel.setText("Radio host not reachable.");
+            myapp.ui.titleLabel.setText("Audio decoding error.");
         } else if(error == 10) {
+            myapp.ui.titleLabel.setText("Radio host not reachable.");
+        } else if(error == 11) {
             myapp.ui.titleLabel.setText("Network connection error.");
         }
     }
@@ -392,6 +395,17 @@ radio.play();
 <ul>
 <li>Fixed bug in YLMMSRadio that would wait for blocking FFmpeg functions during reconnections.</li>
 <li>When playing very short audio clips playback would not start. This issue has been fixed now.</li>
+</ul>
+
+
+<h4>Release Date: 04/8/2013 - Version: 2.1</h4>
+
+<ul>
+<li>Fixed a memory issue in YLHTTPRadio that was triggered by audio stream packet descriptions going out of range.</li>
+<li>NSURLConnections in YLHTTPRadio are now running in the NSRunLoopCommonModes mode in the current runloop. This will ensure that the connection is not getting stalled by scrolling tableviews or scrollviews.</li>
+<li>If YLMMSRadio fails to play a stream it will check if the stream is available on port 80 and try again. YLMMSRadio will now keep track of this so that it won’t have to perform this test every time.</li>
+<li>Added support for ASX playlists. The implementation didn’t break the concept of using YLHTTPRadio for streams starting with http:// and YLMMSRadio for streams starting with mms://. YLHTTPRadio will return an error with type kRadioErrorPlaylistMMSStreamDetected if it detects a mms radio stream url in the ASX playlist. Please have a look at the demo app to see how you should handle this case and pass the parsed mms url to a YLMMSRadio object.</li>
+<li>Fixed a bug in the metadata parser in YLHTTPRadio that would prevent the start of playback and just stay in the buffering state.</li>
 </ul>
 
 
