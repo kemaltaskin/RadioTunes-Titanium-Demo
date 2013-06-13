@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <style>
 *{margin:0;padding:0;}
 body {
@@ -95,20 +95,20 @@ dd{margin-left:2em;margin-bottom:1em;}
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.1.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.3.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.1.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.3.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.1
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.3
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.1"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.3"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -406,6 +406,23 @@ radio.play();
 <li>If YLMMSRadio fails to play a stream it will check if the stream is available on port 80 and try again. YLMMSRadio will now keep track of this so that it won’t have to perform this test every time.</li>
 <li>Added support for ASX playlists. The implementation didn’t break the concept of using YLHTTPRadio for streams starting with http:// and YLMMSRadio for streams starting with mms://. YLHTTPRadio will return an error with type kRadioErrorPlaylistMMSStreamDetected if it detects a mms radio stream url in the ASX playlist. Please have a look at the demo app to see how you should handle this case and pass the parsed mms url to a YLMMSRadio object.</li>
 <li>Fixed a bug in the metadata parser in YLHTTPRadio that would prevent the start of playback and just stay in the buffering state.</li>
+</ul>
+
+
+<h4>Release Date: 04/22/2013 - Version: 2.2</h4>
+
+<ul>
+<li>Fixed a bug in YLHTTPRadio that would start playback with “broken” audio streams while the audio queue was not initialized properly.</li>
+<li>Improved playlist detection. Besides looking at the URL extension YLHTTPRadio will now also look at the “Content-Type” HTTP header field to decide if the URL is a known playlist format.</li>
+</ul>
+
+
+<h4>Release Date: 06/13/2013 - Version: 2.3</h4>
+
+<ul>
+<li>Fixed bug in bandwidth reporting methods that would cause a crash.</li>
+<li>Improved bandwidth statistics feature by using dispatch_barrier_async for concurrent reads and single write.</li>
+<li>Added support for HTTP redirects.</li>
 </ul>
 
 
