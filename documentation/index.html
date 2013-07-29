@@ -89,26 +89,24 @@ dd{margin-left:2em;margin-bottom:1em;}
 
 <p>RadioTunes SDK is written for iOS developers who want to add radio streaming functionality to their app using a couple lines of code. Behind the scenes RadioTunes relies on the iOS AudioQueue framework and the open source LGPL licensed FFmpeg library.</p>
 
-<p>This module is created with Appcelerator mobile sdk version 2.0.1.GA2.</p>
-
 <h2>Installation</h2>
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.3.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.4.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.3.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.4.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.3
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.4
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.3"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.4"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -423,6 +421,15 @@ radio.play();
 <li>Fixed bug in bandwidth reporting methods that would cause a crash.</li>
 <li>Improved bandwidth statistics feature by using dispatch_barrier_async for concurrent reads and single write.</li>
 <li>Added support for HTTP redirects.</li>
+</ul>
+
+
+<h4>Release Date: 07/29/2013 - Version: 2.4</h4>
+
+<ul>
+<li>Upgraded FFmpeg to version 2.0.</li>
+<li>Updated FFmpeg build scripts to build for armv7, armv7s and i386 architectures.</li>
+<li>Fixed bug in HTTP content-type to playlist parser matching code.</li>
 </ul>
 
 
