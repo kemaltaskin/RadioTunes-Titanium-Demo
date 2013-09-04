@@ -93,20 +93,20 @@ dd{margin-left:2em;margin-bottom:1em;}
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.4.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.5.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.4.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.5.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.4
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.5
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.4"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.5"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -430,6 +430,16 @@ radio.play();
 <li>Upgraded FFmpeg to version 2.0.</li>
 <li>Updated FFmpeg build scripts to build for armv7, armv7s and i386 architectures.</li>
 <li>Fixed bug in HTTP content-type to playlist parser matching code.</li>
+</ul>
+
+
+<h4>Release Date: 09/04/2013 - Version: 2.5</h4>
+
+<ul>
+<li>Fixed bug in ASX playlist parser that would crash on bad input.</li>
+<li>Added mutex locks to FFmpeg functions which are not thread-safe.</li>
+<li>Fixed race-condition in YLMMSRadio.</li>
+<li>We noticed that after upgrading FFmpeg in version 2.4 mms (mms over tcp) streams stopped working on devices. mmsh (mms over http) streams work without problems. After several tests we can say that all FFmpeg versions between 1.0 and 2.0 are affected by this bug. RadioTunes SDK version 2.3 uses FFmpeg version 0.11 which doesn’t have this issue but since it doesn’t support armv7s it’s not an option to switch back. Once this issue is fixed by FFmpeg developers I’ll release a new update.</li>
 </ul>
 
 
