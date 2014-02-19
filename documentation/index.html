@@ -93,20 +93,20 @@ dd{margin-left:2em;margin-bottom:1em;}
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.7.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.8.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.7.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.8.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.7
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.8
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.7"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.8"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -176,6 +176,26 @@ radiotunes.addEventListener('headphone_unplugged', function(e) {
         myapp.radio.play();
     } else {
         myapp.radio.pause();
+    }
+});
+
+radiotunes.addEventListener('remote_control_pause', function(e) {
+    if(myapp.radio == null) {
+        return;
+    }
+
+    if(myapp.radio.isPlaying()) {
+        myapp.radio.pause();
+    }
+});
+
+radiotunes.addEventListener('remote_control_play', function(e) {
+    if(myapp.radio == null) {
+        return;
+    }
+
+    if(myapp.radio.isPaused()) {
+        myapp.radio.play();
     }
 });
 
@@ -457,6 +477,15 @@ radio.play();
 <ul>
 <li>Upgraded FFmpeg version to 2.1. This version fixes the mms (mms over tcp) issue that was introduced in version 2.4 of RadioTunes SDK.</li>
 <li>Added a missing content type to the ASX playlist parser.</li>
+</ul>
+
+
+<h4>Release Date: 02/19/2014 - Version: 2.8</h4>
+
+<ul>
+<li>The module is now built using Appcelerator mobile sdk version 3.2.1.GA.</li>
+<li>Added new remote control events 'remote_control_pause' and 'remote_control_play'.</li>
+<li>Prevent caching of http requests for playlist urls.</li>
 </ul>
 
 
