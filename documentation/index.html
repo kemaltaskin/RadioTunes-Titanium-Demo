@@ -93,20 +93,20 @@ dd{margin-left:2em;margin-bottom:1em;}
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.9.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.11.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.9.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.11.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.9
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.11
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.9"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.11"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -511,6 +511,20 @@ radio.play();
 <li>Added a timeout timer in YLMMSRadio that will prevent FFmpeg functions from blocking the thread for too long without returning.</li>
 <li>Fixed the av_read_frame crash in YLMMSRadio. YLMMSRadio will now correctly report decoding errors and abort gracefully.</li>
 <li>Fixed race condition issue in YLHTTPRadio and YLMMSRadio that prevented the deallocation of objects and kept the internal Reachability object alive listening for network changes.</li>
+</ul>
+
+
+<h4>Release Date: 29/9/2014 - Version: 2.11</h4>
+
+<ul>
+<li>The module is now built using Appcelerator mobile sdk version 3.3.0.GA.</li>
+<li>Minimum deployment target is now iOS 7.0.</li>
+<li>Rebuilt FFmpeg libraries with iOS 8 SDK.</li>
+<li>Following Apple's new defaults, the binary framework ships with i386, armv7 and arm64 (armv7s is removed).</li>
+<li>Added support for non-xml ASX playlists.</li>
+<li>Fixed audio conversion bug in YLMMSRadio.</li>
+<li>Fixed memory issue in handling audio packets in YLHTTPRadio and YLMMSRadio.</li>
+<li>Refactored deprecated methods in YLAudioSession.</li>
 </ul>
 
 
