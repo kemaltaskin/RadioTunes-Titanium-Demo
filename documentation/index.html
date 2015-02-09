@@ -166,20 +166,20 @@ sup {
 
 <p>RadioTunes SDK is already built and packaged as a module that you can install right away. If you make any changes to the module code, you will need to repeat the build and install steps.</p>
 
-<p>Copy the yl.radiotunes-iphone-2.12.zip file to the Titanium directory by running the following line in the terminal:</p>
+<p>Copy the yl.radiotunes-iphone-2.13.zip file to the Titanium directory by running the following line in the terminal:</p>
 
-<pre><code>$ cp yl.radiotunes-iphone-2.12.zip ~/Library/Application\ Support/Titanium
+<pre><code>$ cp yl.radiotunes-iphone-2.13.zip ~/Library/Application\ Support/Titanium
 </code></pre>
 
 <p>The Titanium compiler will automatically expand the module into the correct directory when referenced in your application. The RadioTunes module will be expanded into the following directory:</p>
 
-<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.12
+<pre><code>~/Library/Application Support/Titanium/modules/iphone/yl.radiotunes/2.13
 </code></pre>
 
 <p>Once the module is installed you can use it in your Titanium application project. Open your projects' <strong>tiapp.xml</strong> file and add the following lines at the end:</p>
 
 <pre><code>&lt;modules&gt;
-    &lt;module version="2.12"&gt;yl.radiotunes&lt;/module&gt;
+    &lt;module version="2.13"&gt;yl.radiotunes&lt;/module&gt;
 &lt;/modules&gt;
 </code></pre>
 
@@ -289,6 +289,14 @@ radiotunes.addEventListener('remote_control_previous_track', function(e) {
 
 <pre><code>var radiotunes = require("yl.radiotunes");
 radiotunes.setLicenseKey("your-license-key");
+</code></pre>
+
+<h3>radiotunes.setEnterpriseLicenseKey</h3>
+
+<p>Use this function to set the license key if you've purchased the Enterprise license. This function must be called immediately after the initial loading of the RadioTunes module. License keys can be requested from this page: <a href="http://yakamozlabs.com/license-key">http://yakamozlabs.com/license-key</a>.</p>
+
+<pre><code>var radiotunes = require("yl.radiotunes");
+radiotunes.setEnterpriseLicenseKey("your-license-key", "your-activation-key");
 </code></pre>
 
 <h3>radiotunes.createHTTPRadio</h3>
@@ -620,12 +628,20 @@ radio.play();
 </ul>
 
 
+<h4>Release Date: 9/2/2015 - Version: 2.13</h4>
+
+<ul>
+<li>RadioTunes SDK is now built using Appcelerator mobile SDK version 3.5.0GA which supports the 64 bit architecture.</li>
+<li>Upgraded to FFmpeg version 2.5.</li>
+</ul>
+
+
 <h2>Author</h2>
 
 <p><a href="http://yakamozlabs.com">Yakamoz Labs</a> - info@yakamozlabs.com</p>
 
 <h2>License</h2>
 
-<p>Copyright 2014 Yakamoz Labs. Please refer to the LICENSE file to see the license.</p>
+<p>Copyright 2015 Yakamoz Labs. Please refer to the LICENSE file to see the license.</p>
 </body>
 </html>
